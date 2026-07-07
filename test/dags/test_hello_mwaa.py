@@ -20,7 +20,7 @@ class TestHelloMWAA(unittest.TestCase):
     def test_dag(self):
         dag = self.dagbag.get_dag(dag_id='test-mwaa')
         self.assertDagDictEqual({
-          "hello_task": ["hello_custom_task"],
+          "test_task": ["hello_custom_task"],
           "hello_custom_task": []
         },dag)
 
