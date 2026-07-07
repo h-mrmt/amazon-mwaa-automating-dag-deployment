@@ -8,7 +8,7 @@ class TestHelloMWAA(unittest.TestCase):
         self.dagbag = DagBag(os.path.expanduser("/usr/local/airflow/dags"), include_examples=False)
 
     def test_dag_loaded(self):
-        dag1 = self.dagbag.get_dag(dag_id='hello-mwaa')
+        dag1 = self.dagbag.get_dag(dag_id='test-mwaa')
         assert len(dag1.tasks) == 2
 
     def assertDagDictEqual(self,source,dag):
@@ -18,7 +18,7 @@ class TestHelloMWAA(unittest.TestCase):
             task = dag.get_task(task_id)
             assert task.downstream_task_ids == set(downstream_list)
     def test_dag(self):
-        dag = self.dagbag.get_dag(dag_id='hello-mwaa')
+        dag = self.dagbag.get_dag(dag_id='test-mwaa')
         self.assertDagDictEqual({
           "hello_task": ["hello_custom_task"],
           "hello_custom_task": []
