@@ -46,7 +46,7 @@ Parameters:
   AirflowVersion:
     Description: Airflow Version
     Type: String
-    Default: 2.0.2
+    Default: 2.10.3
 
 
 Resources:
