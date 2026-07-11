@@ -37,7 +37,7 @@ with DAG(
     schedule="@hourly",
     start_date=datetime(2025, 1, 1),
     catchup=False,
-):
+) as dag:
     get_instruments = TimestampedHttpOperator(
         task_id="get_btc_instruments",
         http_conn_id="deribit_api",
@@ -45,11 +45,13 @@ with DAG(
         method="GET",
         data={"currency": "BTC"},
         #response_filter=lambda r: r.text,
+        dag=dag,
     )
 
     save_to_s3 = PythonOperator(
         task_id="save_to_s3",
         python_callable=_save_to_s3,
+        dag=dag,
     )
 
     get_instruments >> save_to_s3
