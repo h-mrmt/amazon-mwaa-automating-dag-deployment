@@ -320,6 +320,14 @@ Resources:
               - !Sub "arn:aws:s3:::${S3Bucket}/*"
           - Effect: Allow
             Action:
+              - s3:PutObject
+              - s3:GetObject
+              - s3:ListBucket
+            Resource:
+              - "arn:aws:s3:::crypto-vol-data"
+              - "arn:aws:s3:::crypto-vol-data/*"
+          - Effect: Allow
+            Action:
               - logs:DescribeLogGroups
             Resource: "*"
 
