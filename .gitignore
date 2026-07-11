@@ -18,3 +18,6 @@ dist/
 node_modules/
 .secret-*
 .aws-sam
+.venv
+.airflow-home
+.claude
